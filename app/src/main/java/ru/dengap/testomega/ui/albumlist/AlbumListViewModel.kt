@@ -6,13 +6,12 @@ import androidx.lifecycle.ViewModel
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import ru.dengap.testomega.api.ItunesApiFactory
-import ru.dengap.testomega.pojo.Album
 import ru.dengap.testomega.pojo.Result
 
 class AlbumListViewModel : ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
-    var albums: MutableLiveData<List<Album>> = MutableLiveData()
+    var albums: MutableLiveData<List<Result>> = MutableLiveData()
 
     init {
         loadAlbums()
@@ -25,14 +24,13 @@ class AlbumListViewModel : ViewModel() {
             .subscribe({
                 it?.let { results ->
                     (results as MutableList).map { result ->
-                        if (result is Album) {
-                            Log.d("LOADING_ALBUMS_BEFORE", result.artworkUrl100.toString())
-                            result.artworkUrl100 =
-                                result.artworkUrl100?.replace("100x100bb", "500x500bb")
-                            Log.d("LOADING_ALBUMS_AFTER", result.artworkUrl100.toString())
-                        }
+                        Log.d("LOADING_ALBUMS_BEFORE", result.artworkUrl100.toString())
+                        result.artworkUrl100 =
+                            result.artworkUrl100?.replace("100x100bb", "500x500bb")
+                        Log.d("LOADING_ALBUMS_AFTER", result.artworkUrl100.toString())
+
                     }
-                    albums.postValue(results as List<Album>)
+                    albums.postValue(results as List<Result>)
                 }
             }, {
                 Log.d("LOADING_ALBUMS", it.message)

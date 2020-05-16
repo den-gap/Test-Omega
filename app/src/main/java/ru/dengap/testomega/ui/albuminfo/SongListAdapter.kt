@@ -6,15 +6,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.song_item.view.*
 import ru.dengap.testomega.R
-import ru.dengap.testomega.pojo.Track
-import java.text.DateFormat
+import ru.dengap.testomega.pojo.Result
 import java.text.SimpleDateFormat
 import java.util.*
 
 class SongListAdapter() :
     RecyclerView.Adapter<SongListAdapter.AlbumViewHolder>() {
 
-    var songList: List<Track> = listOf()
+    var songList: List<Result> = listOf()
         set(value) {
             notifyDataSetChanged()
             field = value
@@ -40,11 +39,11 @@ class SongListAdapter() :
 
     override fun onBindViewHolder(holder: AlbumViewHolder, position: Int) {
         holder.apply {
-            songNumTV.text = (position - 1).toString()
+            songNumTV.text = songList[position].trackNumber.toString()
             songNameTV.text = songList[position].trackName
-            val df: DateFormat = SimpleDateFormat("HH:mm:ss")
+            val df = SimpleDateFormat("mm:ss")
             songTimeTV.text = df.format(Date(songList[position].trackTimeMillis!!.toLong()))
-            songPriceTV.text = "${songList[position].trackPrice}р."
+            songPriceTV.text = "${songList[position].trackPrice?.toInt()}р."
         }
     }
 }

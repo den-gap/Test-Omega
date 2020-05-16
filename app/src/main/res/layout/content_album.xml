@@ -13,16 +13,83 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/artistNameTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:text="Artist"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/collectionNameTV"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/collectionNameTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="Album"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/genreTV"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/artistNameTV" />
+
+        <TextView
+            android:id="@+id/genreTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="Genre"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/collectionPriceTV"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/collectionNameTV" />
+
+        <TextView
+            android:id="@+id/collectionPriceTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="500p"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/releaseDateTV"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/genreTV" />
+
+        <TextView
+            android:id="@+id/releaseDateTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="20.15.2020"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/copyrightTV"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/collectionPriceTV" />
+
+        <TextView
+            android:id="@+id/copyrightTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="copyright"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/tracksTV"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/releaseDateTV" />
+
+        <TextView
             android:id="@+id/tracksTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="10dp"
-            android:textSize="20sp"
+            android:text="@string/tracks"
             android:textColor="@android:color/black"
-            android:text="@string/tracks" />
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/copyrightTV" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/songsRV"
@@ -32,8 +99,6 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tracksTV"
-            app:layout_constraintVertical_bias="0.0"
-            tools:layout_editor_absoluteX="0dp"
             tools:listitem="@layout/song_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

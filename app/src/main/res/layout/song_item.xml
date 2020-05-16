@@ -2,12 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_margin="12dp">
 
     <TextView
         android:id="@+id/songNumTV"
-        android:layout_width="wrap_content"
+        android:layout_width="20dp"
         android:layout_height="wrap_content"
         android:text="1"
         android:textColor="@android:color/black"
@@ -34,7 +34,7 @@
         app:layout_constraintHorizontal_weight="2"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
-        android:text="3:52"
+        android:text="03:52"
         android:textColor="@android:color/black"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@id/songPriceTV"
@@ -42,12 +42,12 @@
 
     <TextView
         android:id="@+id/songPriceTV"
-        android:layout_width="35dp"
+        android:layout_width="40dp"
         android:gravity="center"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:background="@color/colorPrimaryDark"
-        android:text="22р"
+        android:text="50р"
         android:textColor="@android:color/white"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"

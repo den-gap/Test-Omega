@@ -7,9 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.activity_main.*
 import ru.dengap.testomega.ui.albumlist.AlbumListAdapter
 import ru.dengap.testomega.ui.albumlist.AlbumListViewModel
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,11 +28,9 @@ class MainActivity : AppCompatActivity() {
                 else -> GridLayoutManager(context, columnCount)
             }
             viewModel.albums.observe(this@MainActivity, Observer {
-                it?.let {
-                    Log.d("WRITE_TO_ADAPTER", it.size.toString())
-                    Log.d("WRITE_TO_ADAPTER", it.toString())
-                    (adapter as AlbumListAdapter).albumList = it
-                }
+                Log.d("WRITE_TO_ADAPTER", it.size.toString())
+                Log.d("WRITE_TO_ADAPTER", it.toString())
+                (adapter as AlbumListAdapter).albumList = it
             })
         }
     }

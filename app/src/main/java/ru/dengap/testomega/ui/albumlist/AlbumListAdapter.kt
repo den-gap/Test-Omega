@@ -9,11 +9,11 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.album_item.view.*
 import ru.dengap.testomega.AlbumActivity
 import ru.dengap.testomega.R
-import ru.dengap.testomega.pojo.Album
+import ru.dengap.testomega.pojo.Result
 
 class AlbumListAdapter(private val context: Context) : RecyclerView.Adapter<AlbumListAdapter.AlbumViewHolder>() {
 
-    var albumList: List<Album> = listOf()
+    var albumList: List<Result> = listOf()
         set(value) {
             notifyDataSetChanged()
             field = value
