@@ -11,7 +11,11 @@ import ru.dengap.testomega.pojo.Result
 class AlbumViewModel : ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
+
+    //информация о выбранном альбоме
     var album: MutableLiveData<Result> = MutableLiveData()
+
+    //информация о треках выбранного альбома
     var songs: MutableLiveData<List<Result>> = MutableLiveData()
 
     fun loadAlbumInfo(collectionId: Long) {
@@ -26,7 +30,9 @@ class AlbumViewModel : ViewModel() {
                 it?.let { results ->
                     results[0].artworkUrl100 =
                         results[0].artworkUrl100?.replace("100x100bb", "500x500bb")
+                    //первый элемент при подобном запросе у нас всегда типа collection
                     album.postValue(results[0])
+                    //остальное треки
                     songs.postValue(results.subList(1, results.size))
                 }
             }, {

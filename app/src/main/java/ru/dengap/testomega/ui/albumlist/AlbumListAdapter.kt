@@ -7,16 +7,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.album_item.view.*
-import ru.dengap.testomega.AlbumActivity
 import ru.dengap.testomega.R
 import ru.dengap.testomega.pojo.Result
+import ru.dengap.testomega.ui.activity.AlbumActivity
 
 class AlbumListAdapter(private val context: Context) : RecyclerView.Adapter<AlbumListAdapter.AlbumViewHolder>() {
 
+    /*в сеттере сортируем список по названию альбома и уведомляем адаптер об изменении данных для
+    прорисовки нового списка*/
     var albumList: List<Result> = listOf()
         set(value) {
+            field = value.sortedBy { it.collectionName }
             notifyDataSetChanged()
-            field = value
         }
 
     inner class AlbumViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -24,7 +26,9 @@ class AlbumListAdapter(private val context: Context) : RecyclerView.Adapter<Albu
 
         init {
             itemView.setOnClickListener {
-                context.startActivity(AlbumActivity.newIntent(context,
+                context.startActivity(
+                    AlbumActivity.newIntent(
+                        context,
                     albumList[adapterPosition].collectionId!!.toLong(),
                     albumList[adapterPosition].collectionName!!))
             }

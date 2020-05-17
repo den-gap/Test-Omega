@@ -5,10 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".AlbumActivity"
+    tools:context=".ui.activity.AlbumActivity"
     tools:showIn="@layout/activity_album">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/allInfoGroup"
+        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -17,6 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
             android:text="Artist"
             android:textSize="16sp"
@@ -29,6 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
             android:text="Album"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/genreTV"
@@ -40,6 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
             android:text="Genre"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/collectionPriceTV"
@@ -51,6 +56,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
             android:text="500p"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/releaseDateTV"
@@ -62,6 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
             android:text="20.15.2020"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/copyrightTV"
@@ -73,6 +80,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
             android:text="copyright"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/tracksTV"

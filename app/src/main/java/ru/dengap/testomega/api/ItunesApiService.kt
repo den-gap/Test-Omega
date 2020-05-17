@@ -1,12 +1,14 @@
 package ru.dengap.testomega.api
 
 import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
 import ru.dengap.testomega.pojo.RootData
 
 interface ItunesApiService {
+    /**
+     * Формируем запрос списка альбомов для главного экрана
+     */
     @GET(GET_SEARCH)
     fun getAlbums(
         @Query(REQUIRED_TERM_PARAM) term: String,
@@ -15,6 +17,10 @@ interface ItunesApiService {
         @Query(ENTITY_PARAM) entity: String = "album"
     ): Observable<RootData>
 
+
+    /**
+     * Формируем запрос информации о выбранном альбоме по его [id]
+     */
     @GET(GET_LOOKUP)
     fun getAlbumInfo(
         @Query(REQUIRED_COUNTRY_PARAM) country: String = "RU",

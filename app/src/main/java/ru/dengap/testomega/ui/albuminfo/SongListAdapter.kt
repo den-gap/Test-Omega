@@ -15,8 +15,8 @@ class SongListAdapter() :
 
     var songList: List<Result> = listOf()
         set(value) {
-            notifyDataSetChanged()
             field = value
+            notifyDataSetChanged()
         }
 
     inner class AlbumViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

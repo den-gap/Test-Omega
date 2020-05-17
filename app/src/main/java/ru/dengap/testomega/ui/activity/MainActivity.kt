@@ -1,4 +1,4 @@
-package ru.dengap.testomega
+package ru.dengap.testomega.ui.activity
 
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
+import ru.dengap.testomega.R
 import ru.dengap.testomega.ui.albumlist.AlbumListAdapter
 import ru.dengap.testomega.ui.albumlist.AlbumListViewModel
 
@@ -23,12 +24,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         rvAdapter = AlbumListAdapter(this)
+        //Используем котлин синтетик для поиска view
         album_listRV.apply {
             adapter = rvAdapter
             layoutManager = when {
                 columnCount <= 1 -> LinearLayoutManager(context)
                 else -> GridLayoutManager(context, columnCount)
             }
+            //Подписываемся на изменения альбомов для передачи их в адаптер RecyclerView
             viewModel.albums.observe(this@MainActivity, Observer {
                 Log.d("WRITE_TO_ADAPTER", it.size.toString())
                 Log.d("WRITE_TO_ADAPTER", it.toString())
@@ -37,6 +40,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Здесь мы только подключаем поиск в стандарный ActionVar
+     */
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_album_list, menu)
         val searchItem = menu?.findItem(R.id.action_search)
