@@ -12,13 +12,18 @@ class AlbumListViewModel : ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
     var albums: MutableLiveData<List<Result>> = MutableLiveData()
+    var query = "jack+johnson"
+        set(value) {
+            field = value.replace(" ", "+")
+            loadAlbums()
+        }
 
     init {
         loadAlbums()
     }
 
     fun loadAlbums() {
-        val disposable = ItunesApiFactory.apiService.getAlbums(term = "jack+johnson")
+        val disposable = ItunesApiFactory.apiService.getAlbums(term = query)
             .map { it.results }
             .subscribeOn(Schedulers.io())
             .subscribe({

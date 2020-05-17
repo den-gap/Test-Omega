@@ -5,7 +5,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ItunesApiFactory {
-    private val BASE_URL = "https://itunes.apple.com/"
+    private const val BASE_URL = "https://itunes.apple.com/"
 
     //    private val gson = GsonBuilder()
 //        .registerTypeAdapter(Result::class.java, ResultDeserializer())
@@ -15,7 +15,7 @@ object ItunesApiFactory {
         .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
         .baseUrl(BASE_URL)
         .build()
-    val apiService = retrofit.create(ItunesApiService::class.java)
+    val apiService: ItunesApiService = retrofit.create(ItunesApiService::class.java)
 }
 
 //class ResultDeserializer : JsonDeserializer<Result> {
